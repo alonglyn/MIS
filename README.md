@@ -8,7 +8,7 @@ python==3.6
 linux==Ubuntu16.04LTS
 package==requirment.txt
 
-假设你已经创建好python3的虚拟环境， 或者使用pycharm创建了虚拟环境， 或者你头铁使用default的虚拟环境
+假设你已经创建好python3的虚拟环境， 或者使用pycharm创建了虚拟环境， 或者你头铁使用default的环境
 
 ```shell
 source ./venv/bin/activate  # 如果使用了虚拟环境， 先切换
