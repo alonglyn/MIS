@@ -19,7 +19,7 @@ source ./venv/bin/activate  # 如果使用了虚拟环境， 先切换
 pip install -r requirements.txt
 python manage.py runserver runserver 127.0.0.1:8000  # 或者sudo sh ./start.sh
 ```
-[体验地址](http://120.79.219.177/)
+[体验地址](http://120.79.219.177:8080/)
 账户:guest
 密码:qwerasdf
 # 实习周实验报告
