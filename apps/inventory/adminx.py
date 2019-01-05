@@ -3,7 +3,7 @@ from import_export import resources
 from daterange_filter.filter import DateRangeFilter
 from .models import *
 from django.db.models import Q
-
+# TODO 物资和产品的adminx中 ， 如果存在一个用户不是职员也不是超级管理员的话会报错， 所以暂时添加了try 和 except 来纠错
 
 class WuZiKuCunResource(resources.ModelResource):
     class Meta:
@@ -39,7 +39,10 @@ class WuZiKuCunAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     exclude = []
@@ -71,7 +74,10 @@ class WuZiKuCunAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     count.short_description = '库存量'  # 显示为库存量
@@ -87,7 +93,10 @@ class WuZiRuKuAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.czz:
-            obj.czz = User.objects.get(username=self.request.user).employee
+            try:
+                obj.czz = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def count(self, obj):
@@ -103,7 +112,10 @@ class WuZiRuKuAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     readonly_fields = ['rkdh', ]
@@ -163,7 +175,10 @@ class WuZiChuKuAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.czz:
-            obj.czz = User.objects.get(username=self.request.user).employee
+            try:
+                obj.czz = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def count(self, obj):
@@ -179,7 +194,10 @@ class WuZiChuKuAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     exclude = []
@@ -237,7 +255,10 @@ class WuZiFaFangAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.czz:
-            obj.czz = User.objects.get(username=self.request.user).employee
+            try:
+                obj.czz = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def queryset(self):
@@ -246,7 +267,10 @@ class WuZiFaFangAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     readonly_fields = ['ffbh', 'je', 'cj', ]
@@ -301,7 +325,10 @@ class WuZiPanCunAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.czz:
-            obj.czz = User.objects.get(username=self.request.user).employee
+            try:
+                obj.czz = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def queryset(self):
@@ -310,7 +337,10 @@ class WuZiPanCunAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(wzkc__ssjg=user.employee.ssjg) | Q(wzkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     exclude = []

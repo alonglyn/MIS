@@ -16,10 +16,12 @@ Including another URLconf
 # from django.contrib import admin
 from django.urls import path
 import xadmin
-from .views import index
+from .views import index, backup, reload
 # from .settings import STATIC_ROOT
 # from django.views import static
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('', index),
+    path('backup/', backup),
+    path('reload/', reload),
 ]

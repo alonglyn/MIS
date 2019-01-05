@@ -48,7 +48,10 @@ class ChanPinKuCunAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(ssjg=user.employee.ssjg) | Q(ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     count.short_description = '库存量'  # 显示为库存量
@@ -89,7 +92,10 @@ class ChanPinRuKuAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.jsr:
-            obj.jsr = User.objects.get(username=self.request.user).employee
+            try:
+                obj.jsr = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def queryset(self):
@@ -98,7 +104,10 @@ class ChanPinRuKuAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     def count(self, obj):
@@ -163,7 +172,10 @@ class ChanPinChuKuAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.jsr:
-            obj.jsr = User.objects.get(username=self.request.user).employee
+            try:
+                obj.jsr = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def count(self, obj):
@@ -179,7 +191,10 @@ class ChanPinChuKuAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     readonly_fields = ['je', 'pm', 'ckdh']
@@ -236,7 +251,10 @@ class ChanPinXiaoShouAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.jsr:
-            obj.jsr = User.objects.get(username=self.request.user).employee
+            try:
+                obj.jsr = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def queryset(self):
@@ -245,7 +263,10 @@ class ChanPinXiaoShouAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     readonly_fields = ['xsdh', 'je', ]
@@ -334,7 +355,10 @@ class ChanPinPanCunAdmin:
     def save_models(self):
         obj = self.new_obj
         if not obj.jsr:
-            obj.jsr = User.objects.get(username=self.request.user).employee
+            try:
+                obj.jsr = User.objects.get(username=self.request.user).employee
+            except:
+                pass
         obj.save()
 
     def queryset(self):
@@ -343,7 +367,10 @@ class ChanPinPanCunAdmin:
         if user.is_superuser:
             return qs
         else:
-            qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            try:
+                qs = qs.filter(Q(cpkc__ssjg=user.employee.ssjg) | Q(cpkc__ssjg__ssjg=user.employee.ssjg))
+            except:
+                pass
             return qs
 
     readonly_fields = ['id', ]
