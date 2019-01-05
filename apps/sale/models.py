@@ -146,7 +146,7 @@ class ChanPinRuKu(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return '%s出库%s %s' % (self.cpkc.ssjg, self.cpkc.cpmc, self.sl)
+        return '%s入库%s %s' % (self.cpkc.ssjg, self.cpkc.cpmc, self.sl)
 
 
 class ChanPinChuKu(models.Model):
@@ -209,7 +209,7 @@ class ChanPinChuKu(models.Model):
         self.date = self.czsj.date()
         self.je = self.dj * self.sl
         self.pm = self.cpkc.ssjg.jgmc
-        if self.nh is None or self.nh == '':
+        if not self.nh and self.rkdh:
             self.nh = self.rkdh.nh
         super().save(*args, **kwargs)
         self.ckdh = '%07d' % self.id

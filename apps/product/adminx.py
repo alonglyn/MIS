@@ -108,7 +108,6 @@ class DaiGouDianShengChanAdmin:
     raw_id_fields = ['dgd', 'parent']
     search_files = ['dgd', ]
     list_filter = ['zdsj', 'status']
-    # filter_horizontal = ('scscjh',)
     inlines = [NongHuShengChanInline, ]
 
 
@@ -134,6 +133,7 @@ class ShengChanJiDiShengChanAdmin:
 
 @xadmin.sites.register(GongSiShengChan)
 class GongSiShengChanAdmin:
+
     import_export_args = {'import_resource_class': GongSiShengChanResource,
                           'export_resource_class': GongSiShengChanResource}
 
@@ -145,6 +145,5 @@ class GongSiShengChanAdmin:
     list_display = ['scjhbh', 'zdsj', 'zdr', 'status']
     exclude = []
     list_filter = ['zdsj', 'status']
-    # filter_vertical = ('scscjh',)
 
     inlines = [ShengChanJiDiShengChanInline, ]

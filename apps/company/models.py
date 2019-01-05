@@ -118,7 +118,7 @@ class ChanPinXinXi(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        limit_choices_to={'jglb': 'scjd'},
+        limit_choices_to={'jglb': 'JD'},
         verbose_name='基地编号',
     )
 
@@ -143,7 +143,7 @@ class NongHuXinXi(models.Model):
         'JiGou',
         on_delete=models.CASCADE,
         verbose_name='所属代购点',
-        limit_choices_to={'jglb': 'DGD'},
+        limit_choices_to={'jglb': 'DG'},
     )
     lxdh = models.CharField('联系电话', max_length=12)
 

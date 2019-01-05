@@ -71,7 +71,7 @@ class ShengChanJiDiShengChan(models.Model):
     scjd = models.ForeignKey(
         'company.JiGou',
         on_delete=models.CASCADE,
-        limit_choices_to={'jglb': 'SCJD'},
+        limit_choices_to={'jglb': 'JD'},
         verbose_name='生产基地'
     )
     parent = models.ForeignKey(
@@ -110,7 +110,7 @@ class DaiGouDianShengChan(models.Model):
     dgd = models.ForeignKey(
         'company.JiGou',
         on_delete=models.CASCADE,
-        limit_choices_to={'jglb': 'DGD'},
+        limit_choices_to={'jglb': 'DG'},
         verbose_name='代购点'
     )
     parent = models.ForeignKey(
